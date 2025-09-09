@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EcoLearn Design System - Environmental Education Platform */
+
+@layer base {
+  :root {
+    /* Core environmental color palette */
+    --background: 120 25% 98%;
+    --foreground: 140 85% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 140 85% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 85% 8%;
+
+    /* Primary green - vibrant eco green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 142 65% 55%;
+
+    /* Secondary earth tones */
+    --secondary: 35 45% 85%;
+    --secondary-foreground: 140 85% 8%;
+
+    --muted: 120 20% 94%;
+    --muted-foreground: 140 25% 45%;
+
+    /* Accent sky blue for water themes */
+    --accent: 200 89% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success green for achievements */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning amber for challenges */
+    --warning: 45 93% 58%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 20% 90%;
+    --input: 120 20% 95%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Environmental gradients */
+    --gradient-eco: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow))
+    );
+    --gradient-earth: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--warning))
+    );
+    --gradient-water: linear-gradient(
+      135deg,
+      hsl(var(--accent)),
+      hsl(var(--primary-glow))
+    );
+    --gradient-forest: linear-gradient(
+      135deg,
+      hsl(142 85% 25%),
+      hsl(var(--primary))
+    );
+
+    /* Shadows with eco theme */
+    --shadow-eco: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.2);
+    --shadow-card: 0 4px 20px hsl(var(--primary) / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode environmental colors */
+    --background: 140 25% 6%;
+    --foreground: 120 15% 95%;
+
+    --card: 140 20% 8%;
+    --card-foreground: 120 15% 95%;
+
+    --primary: 142 65% 55%;
+    --primary-foreground: 140 85% 8%;
+    --primary-glow: 142 75% 65%;
+
+    --secondary: 35 25% 15%;
+    --secondary-foreground: 120 15% 95%;
+
+    --muted: 140 15% 12%;
+    --muted-foreground: 140 15% 60%;
+
+    --accent: 200 75% 60%;
+    --accent-foreground: 140 85% 8%;
+
+    --border: 140 15% 18%;
+    --input: 140 15% 15%;
+    --ring: 142 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Subtle eco gradient background for the entire app */
+    background-image: radial-gradient(
+        1000px 400px at -10% -10%,
+        hsl(var(--accent) / 0.12),
+        transparent 60%
+      ),
+      radial-gradient(
+        800px 300px at 110% 10%,
+        hsl(var(--primary-glow) / 0.12),
+        transparent 60%
+      ),
+      radial-gradient(
+        700px 300px at 50% 110%,
+        hsl(var(--primary) / 0.08),
+        transparent 60%
+      );
+  }
+}
+
+@layer components {
+  /* Eco button variants */
+  .btn-eco {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-eco active:scale-95;
+  }
+
+  .btn-earth {
+    @apply bg-gradient-to-r from-warning to-primary text-primary-foreground;
+    @apply rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-glow active:scale-95;
+  }
+
+  /* Progress bars */
+  .progress-eco {
+    @apply bg-muted rounded-full h-3 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply bg-gradient-to-r from-primary to-primary-glow h-full rounded-full;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Cards */
+  .card-eco {
+    @apply bg-card border border-border rounded-2xl p-6;
+    @apply shadow-card hover:shadow-eco transition-all duration-300;
+    @apply hover:scale-[1.02] hover:-translate-y-1;
+  }
+
+  /* Badges */
+  .badge-eco {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply px-3 py-1 rounded-full text-sm font-semibold;
+    @apply shadow-sm;
+  }
+
+  .badge-water {
+    @apply bg-gradient-to-r from-accent to-primary-glow text-accent-foreground;
+    @apply px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  /* Animations */
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  .text-gradient-eco {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-water {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--accent)),
+      hsl(var(--primary-glow))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(var(--primary-glow) / 0.5);
+  }
+}
+
+/* GreenCoins specific animations */
+@keyframes coin-earn {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes coin-sparkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(90deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(270deg);
+  }
+}
+
+.animate-coin-earn {
+  animation: coin-earn 0.6s ease-out;
+}
+
+.animate-coin-sparkle {
+  animation: coin-sparkle 2s ease-in-out infinite;
+}
+
+.coin-balance-update {
+  transition: all 0.3s ease;
+}
+
+.coin-balance-update.earning {
+  transform: scale(1.1);
+  color: hsl(var(--warning));
+}
